@@ -17,4 +17,4 @@
 *************************************************************/
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
 
-#endif
+#endif /*_MEMORY_H_*/
