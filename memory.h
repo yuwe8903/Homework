@@ -5,6 +5,9 @@
 *************************************************************/
 #ifndef _MEMORY_H_
 #define _MEMORY_H_
+
+#include <stdint.h>
+
 /************************************************************
 *  my_memmove() - Takes two byte pointer (one source and
 *  	one destination) and a length of bytes to copy from 
