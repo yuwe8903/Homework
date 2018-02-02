@@ -75,7 +75,7 @@ uint8_t * my_reverse(uint8_t * src, size_t length);
 *  Return: Return a pointer to memory if successful or a null
 *  	pointer if not successful 
 *************************************************************/
-uint8_t * reverse_words(size_t length);
+uint32_t * reverse_words(size_t length);
 
 /************************************************************
 *  free_words() - Free a dynamic memory allocation by  
@@ -85,7 +85,7 @@ uint8_t * reverse_words(size_t length);
 *  Return: Return a 0 if free is successful or a 1 free is 
 *       if not successful 
 *************************************************************/
-uint8_t * free_words(uint32_t * src);
+void free_words(uint32_t * src);
 
 #endif /*_MEMORY_H_*/
 
