@@ -74,9 +74,10 @@ uint8_t * my_reverse(uint8_t * src, size_t length)
   }
   return src;
 }
-/*
 
-uint32_t * reverse_words(size_t length)
+
+/*
+void * reverse_words(size_t length)
 {
 
 }
