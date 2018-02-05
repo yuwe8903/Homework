@@ -7,17 +7,17 @@ uint8_t * my_itoa(int32_t data, uint8_t * ptr, uint32_t base)
   int8_t i = 1;
   uint8_t remainder;
   uint8_t sign = 0; 
-  printf("sign in= %d \n",sign);
+  /*considering the sign of input data*/
   if(data < 0)
   {
     data = -data;
     sign = 1;
   }
-    printf("sign out = %d \t data = %d\n",sign, data);
   *ptr = '\0';
+  /*Do the data to ASCII conversion*/
   while(data != 0) 
   {
-    remainder = data%base;    /*save the remainder*/
+    remainder = data%base; 
     if(remainder > 9)
     { /*put the remainder to the pointer*/
       *(ptr+i) = (remainder-10)+'a';
@@ -27,19 +27,15 @@ uint8_t * my_itoa(int32_t data, uint8_t * ptr, uint32_t base)
       *(ptr+i) = remainder+ '0';
     }
     data = data/base;
-    printf("ptr = %s \t", ptr+i);
     i++;
   }
-  
-  printf("ptri = %s \n", ptr+i);
-  if(sign == 1)              /*handles negative sign*/
+  /*Taken care of the sign, wether it's a positive or a negative sign*/
+  if(sign == 1)              
   {
     *(ptr+i) = '-';
-    printf("ptri+1 = %s \n", ptr+i);
-    my_reverse(ptr, i+1);    /*call my_reverse function to 
-			       reverse pointer string*/
+    my_reverse(ptr, i+1);    
   }
-  else if(sign == 0)         /*handles positive sign*/
+  else if(sign == 0)  
   {
     my_reverse(ptr, i);
   }
@@ -50,9 +46,11 @@ int32_t my_atoi(uint8_t * ptr, int8_t digits, uint32_t base)
 { 
   uint8_t integer = 0;
   uint8_t j;
+  digits = 0;
+  /*If there is no negative sign at the ptr string*/
   if(*ptr != '-')
   {
-    digits = 0;
+    /*Do the conversion from ASCII to integer*/
     while(*(ptr+integer) != '\0')
     {
       integer++;
@@ -63,9 +61,10 @@ int32_t my_atoi(uint8_t * ptr, int8_t digits, uint32_t base)
     }
     printf("digits_total pos=  %d \n",digits);
   }
+  /*if there is a negative sign at the ptr string*/
   else if(*ptr == '-')
   { 
-    digits = 0;
+    /*Do the conversion from ASCII to integer*/
     while(*(ptr+integer) != '\0')
     {
       integer++;
@@ -79,7 +78,7 @@ int32_t my_atoi(uint8_t * ptr, int8_t digits, uint32_t base)
   }
   return digits;
 }
-
+/*This power function does the exponential calculation base1^exp */
 int32_t power(uint32_t base1, uint8_t exp)
 { 
   uint32_t result = 1;
