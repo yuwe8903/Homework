@@ -21,7 +21,7 @@ uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length)
   return dst;
 }
 
-/*
+
 uint8_t * my_memcpy(uint8_t * src, uint8_t * dst, size_t length)
 {
   for(i = 0; i < length; i++)
@@ -30,7 +30,7 @@ uint8_t * my_memcpy(uint8_t * src, uint8_t * dst, size_t length)
   }
   return dst;
 }
-*/
+
 uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value)
 {
   for(i = 0; i < length; i++)
@@ -79,11 +79,12 @@ uint8_t * my_reverse(uint8_t * src, size_t length)
 /*
 void * reverse_words(size_t length)
 {
-
+  uint8_t * pointer;
+  
 }
 
 void free_words(uint32_t * src)
-
+{
 
 }
 */
