@@ -1,13 +1,13 @@
 /************************************************************
 *  @file  debug.h 
 *  @authour Yue Wei
-*  @date Feb 04 2018
+*  @date Feb 07 2018
 *************************************************************/
 #ifndef _DEBUG_H_
 #define _DEBUG_H_
 
 #include <stdint.h>
-//#include <stdlib.h>
+
 
 /************************************************************
 *  print_array() - Integer to ASCII needs to convert data from a

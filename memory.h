@@ -71,21 +71,22 @@ uint8_t * my_reverse(uint8_t * src, size_t length);
 *  reverse_words() - Takes number of words to allocate in 
 *       dynamic memory.  
 *  Inputs:
-*       size_t length: Number of locations
-*  Return: Return a pointer to memory if successful or a null
-*  	pointer if not successful 
+*       size_t length: Number of words to be reserved
+*  Return: Return a pointer pointing to the top of the
+*  	reserved heap
 *************************************************************/
-void * reverse_words(size_t length);
+int32_t * reverse_words(size_t length);
 
 /************************************************************
 *  free_words() - Free a dynamic memory allocation by  
 *       providing the pointer src to the function.  
 *  Inputs:
-*       uint32_t * src: Pointer 
+*       uint32_t * src: Pointing to the reverved dynamic 
+*       memory
 *  Return: Return a 0 if free is successful or a 1 free is 
 *       if not successful 
 *************************************************************/
-void * free_words(uint32_t * src);
+void free_words(uint32_t * src);
 
 #endif /*_MEMORY_H_*/
 

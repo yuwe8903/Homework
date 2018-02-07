@@ -17,18 +17,18 @@
 *       uint32_t base: Base 2-16
 *  Return: Return a pointer to the destination(dst)  
 *************************************************************/
-uint8_t * my_itoa(int32_t data, uint8_t * ptr, uint32_t base);
+uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base);
 
 /************************************************************
 *  my_atoi() - ASCII to Integer needs to convert data back
 *       from an ASCII represented string into an integer type.
 *  Inputs:
 *       uint8_t * ptr:  Charactor string
-*       uint8_t digits: 
+*       uint8_t digits: Used for integer that converted
 *       uint32_t base:  Number of bytes to move
 *  Return: Return a pointer to the destination(dst)  
 *************************************************************/
-int32_t my_atoi(uint8_t * ptr, int8_t digits, uint32_t base);
+int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base);
 
 /************************************************************
 *  my_atoi() - ASCII to Integer needs to convert data back
