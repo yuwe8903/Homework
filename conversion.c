@@ -59,7 +59,6 @@ int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base)
     { 
       value = value + power(base, j) * (*(ptr+digits-1-j) - 48);
     }
-    printf("value_total pos=  %d \n",value);
   }
   /*if there is a negative sign at the ptr string*/
   else if(*ptr == '-')
@@ -71,10 +70,11 @@ int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base)
       value = value + power(base, j) * (*(ptr+digits-1-j) - 48);
     }
     value = -value;
-   printf("value_total neg = %d \n",value);
   }
   return value;
 }
+
+
 /*This power function does the exponential calculation base1^exp */
 int32_t power(uint32_t base1, uint8_t exp)
 { 

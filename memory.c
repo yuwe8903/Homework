@@ -1,7 +1,8 @@
 #include "memory.h"
 #include <stdio.h>
-int8_t i;
+//#define NULL ((void*)0);
 
+int8_t i;
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length)
 { /*Backward copying*/
   if(dst >=  src)
@@ -80,10 +81,15 @@ uint8_t * my_reverse(uint8_t * src, size_t length)
 
 
 int32_t * reverse_words(size_t length)
-{
-  int32_t * p;
-  p = (int32_t *)malloc(length * sizeof(int8_t));
-  return p; 
+{ 
+  int32_t * ptr = NULL;
+  ptr = (int32_t *)malloc(length * sizeof(int8_t));
+  if(ptr == NULL)
+  {
+    ptr = ptr + 1;
+    printf("Allocation Failed!!! Print one address higer than NULL");
+  }
+  return ptr; 
 }
 
 void free_words(uint32_t * src)
