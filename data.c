@@ -1,5 +1,4 @@
 #include "data.h"
-#include <stdint.h>
 #include <stddef.h>
 void print_cstd_type_sizes()
 {
@@ -64,6 +63,7 @@ void print_stdint_type_sizes()
   PRINTF(temp,"ptrdiff_t");
   return;
 }
+
 void print_pointer_sizes()
 { 
   size_t temp;
@@ -96,3 +96,36 @@ void print_pointer_sizes()
   return;
 }
 
+int32_t swap_data_endianness(uint8_t * data, size_t type_length)
+{ 
+  uint8_t i;
+  uint8_t * temp;
+  for(i = 0; i < type_length/2; i++)
+  {
+  temp = data+type_length;
+  *temp = *(data+i);
+  *(data+i) = *(data+type_length-1-i);
+  *(data+type_length-1-i) = *temp;
+  }
+  if((*data & 0xf0) == 0x00 )
+  {
+    return SWAP_ERROR;
+  }
+  else
+  {
+    return SWAP_NO_ERROR;
+  }
+}
+uint32_t determine_endianness()
+{
+  uint16_t data = 0x1234;
+  uint8_t * ptr = (uint8_t*)&data;
+  if(*ptr == 0x34)
+  {
+    return 0; //LITTLE_ENDIAN;
+  }
+  else 
+  {
+    return 1; //BIG_ENDIAN;
+  }
+}
