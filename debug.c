@@ -1,3 +1,11 @@
+/************************************************************
+*  @file  debug.c 
+*  @description This is the function defination for the 
+* 	function declaraion in debug.h file
+*  @authour Yue Wei
+*  @date Feb 07 2018
+*************************************************************/
+
 #include "debug.h"
 #include <stdio.h>
 

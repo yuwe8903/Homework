@@ -1,5 +1,7 @@
 /************************************************************
 *  @file conversion.h 
+*  @descripition declare itoa and atoi functions to perfom 
+* 	the conversion between ASCII and Integer
 *  @authour Yue Wei
 *  @date Feb 04 2018
 *************************************************************/

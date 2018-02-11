@@ -1,8 +1,15 @@
+/************************************************************
+*  @file memory.c 
+*  @description These are function definations for all of the
+*       function declaraion in memory.h file
+*  @authour Yue Wei
+*  @date Jan 31 2018
+*************************************************************/ 
 #include "memory.h"
 #include <stdio.h>
-//#define NULL ((void*)0);
 
 int8_t i;
+/*Move a given size of string in memory*/
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length)
 { 
   /*Backward copying*/
@@ -23,17 +30,16 @@ uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length)
   }
   return dst;
 }
-
-
+/*Memory copy function*/
 uint8_t * my_memcpy(uint8_t * src, uint8_t * dst, size_t length)
-{ /*Forward copying*/
+{
   for(i = 0; i < length; i++)
   {
     *(dst+i)= *(src+i);
   }
   return dst;
 }
-
+/*set a given size of memory to a given value*/
 uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value)
 {
   for(i = 0; i < length; i++)
@@ -43,7 +49,7 @@ uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value)
   }
   return src;
 }
-
+/*set a given size of memory to zero*/
 uint8_t * my_memzero(uint8_t * src, size_t length)
 { // if(src == NULL){}
   for(i = 0; i < length; i++)
@@ -53,7 +59,7 @@ uint8_t * my_memzero(uint8_t * src, size_t length)
   }
   return src;
 }
-
+/*Reverse string*/
 uint8_t * my_reverse(uint8_t * src, size_t length)
 { 
   uint8_t temp_reverse;
@@ -79,23 +85,19 @@ uint8_t * my_reverse(uint8_t * src, size_t length)
   }
   return src;
 }
-
-
-void * reverse_words(size_t length)
+/*Reserve dynamic memory*/
+void * reserve_words(size_t length)
 { 
   int32_t * ptr = NULL;
   ptr = (int32_t *)malloc(length * sizeof(int8_t));
   return ptr; 
 }
-
+/*Free the reserved memory*/
 uint8_t free_words(void * src)
 {
   uint8_t a;
   free(src);
-  //if(src )
-  printf("ssss = %p \n",src);
   a = 0;
- // a = 1;
   return a;
 }
 

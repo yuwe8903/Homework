@@ -68,14 +68,14 @@ uint8_t * my_memzero(uint8_t * src, size_t length);
 uint8_t * my_reverse(uint8_t * src, size_t length);
 
 /************************************************************
-*  reverse_words() - Takes number of words to allocate in 
+*  reserve_words() - Takes number of words to allocate in 
 *       dynamic memory.  
 *  Inputs:
 *       size_t length: Number of words to be reserved
 *  Return: Return a pointer pointing to the top of the
 *  	reserved heap
 *************************************************************/
-void * reverse_words(size_t length);
+void * reserve_words(size_t length);
 
 /************************************************************
 *  free_words() - Free a dynamic memory allocation by  

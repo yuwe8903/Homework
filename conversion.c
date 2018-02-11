@@ -1,7 +1,15 @@
+/************************************************************
+*  @file conversion.c 
+*  @description These are function definations for all of the 
+*  	function declaraion in conversion.h file  
+*  @authour Yue Wei
+*  @date Feb 04 2018
+*************************************************************/
 #include "conversion.h"
 #include "memory.h"
 #include <stdio.h>
 #include <math.h>
+/*Convert Integer to ASCII*/
 uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base)
 { 
   uint8_t i = 1;
@@ -43,7 +51,7 @@ uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base)
   }
   return i;
 }
-
+/*Convert ASCII to Integer*/
 int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base)
 { 
   int8_t value = 0;
