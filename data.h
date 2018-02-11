@@ -1,7 +1,9 @@
 /************************************************************
 *  @file data.h 
+*  @desctription declare functions to print sizes of data 
+* 	types and to swap and determine endianness
 *  @authour Yue Wei
-*  @date Fed 08 2018
+*  @date Fed 05 2018
 *************************************************************/
 #ifndef _DATA_H_
 #define _DATA_H_
@@ -16,7 +18,7 @@
 #define SWAP_NO_ERROR (0) 
 #define SWAP_ERROR (-1)
 
-#if defined (_GNUC_)
+#if defined (__GNUC__)
 #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 #endif
 

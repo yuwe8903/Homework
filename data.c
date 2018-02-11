@@ -1,5 +1,14 @@
+/************************************************************
+*  @file data.c
+*  @description These are function definations for all of the 
+*       function declaraion in data.h file 
+*  @authour Yue Wei
+*  @date Fed 05 2018
+*************************************************************/
+
 #include "data.h"
 #include <stddef.h>
+/*Print c standard type size*/
 void print_cstd_type_sizes()
 {
   size_t temp;
@@ -29,7 +38,7 @@ void print_cstd_type_sizes()
   PRINTF(temp,"signed long");
   return;
 }
-
+/*Print standard integer type size*/
 void print_stdint_type_sizes()
 {
   size_t temp;
@@ -63,7 +72,7 @@ void print_stdint_type_sizes()
   PRINTF(temp,"ptrdiff_t");
   return;
 }
-
+/*Print pointer type size*/
 void print_pointer_sizes()
 { 
   size_t temp;
@@ -95,7 +104,7 @@ void print_pointer_sizes()
   PRINTF(temp,"void*");
   return;
 }
-
+/*Swap between little endian and big endian*/
 int32_t swap_data_endianness(uint8_t * data, size_t type_length)
 { 
   uint8_t i;
@@ -107,15 +116,18 @@ int32_t swap_data_endianness(uint8_t * data, size_t type_length)
   *(data+i) = *(data+type_length-1-i);
   *(data+type_length-1-i) = *temp;
   }
+  /*if data have odd number of hex digits like 0x1234567, show swap error*/
   if((*data & 0xf0) == 0x00 )
   {
     return SWAP_ERROR;
   }
+  /*if data have even number of hex digits like 0x12345678, show swap no error*/
   else
   {
     return SWAP_NO_ERROR;
   }
 }
+/*Determining whether it is little or big endian*/
 uint32_t determine_endianness()
 {
   uint16_t data = 0x1234;

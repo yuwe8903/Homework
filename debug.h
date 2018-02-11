@@ -1,5 +1,6 @@
 /************************************************************
 *  @file  debug.h 
+*  @description declare print array function
 *  @authour Yue Wei
 *  @date Feb 07 2018
 *************************************************************/
@@ -8,17 +9,15 @@
 
 #include <stdint.h>
 
-
 /************************************************************
-*  print_array() - Integer to ASCII needs to convert data from a
-*       standard integer type into an ASCII string. 
+*  print_array() - This function prints array if VERBOSE is
+*       defined
 *  Inputs:
-*       uint8_t * start:  
-*       uint32_t length: 
-*  Return: Return a  
+*       uint8_t * start: Point to the first element of array
+*       uint32_t length: length of array
+*  Return: Return nothing
 *************************************************************/
 void print_array(uint8_t * start, uint32_t length);
-
 
 #endif /*_DEBUG_H_*/
 
