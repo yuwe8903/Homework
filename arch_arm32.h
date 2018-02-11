@@ -8,7 +8,9 @@
 #include <stdint.h>
 #define __SCB_ADDRESS (0xE000ED00)
 #define __AIRCR_ADDRESS_OFFSET (0xE000ED0C)
-#define __AIRCR ((volatile uint32_t*)__AIRCR_ADDRESS_OFFSET)
+/*uint32_t points to the address of __AIRCR_ADDRESS, 
+**then dereference it using the star in front.*/
+#define __AIRCR (*((volatile uint32_t*)__AIRCR_ADDRESS_OFFSET))
 #define __AIRCR_ENDIANNESS_OFFSET (15)
 #define __AIRCR_ENDIANNESS_MASK (0x00008000)
 

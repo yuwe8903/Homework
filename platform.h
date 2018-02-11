@@ -13,11 +13,12 @@
 #include <stdlib.h>
 #ifdef (KL25Z_PLATFORM) && (! BBB_PLATFORM) && (! HOST_PLATFORM) 
 //#pragma GCC poison printf
-#undef PRINTF(temp, string) ({\
+#define PRINTF(temp, string) ({})//KL25z does not have printf function.
+#elif (BBB_PLATFORM) && (! KL25Z_PLATFORM) && (! HOST_PLATFORM)
+#define PRINTF(temp, string) ({\
         printf("sizeof(%s) = %d \n", string, temp);\
         })
-#elif (BBB_PLATFORM) && (! KL25Z_PLATFORM) && (! HOST_PLATFORM)
- BBB_initialize();
+
 #else
 #error "Please specify one platform target"
 #endif
