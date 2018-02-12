@@ -11,16 +11,16 @@
 
 #include <stdio.h>
 #ifdef (KL25Z_PLATFORM) && (! BBB_PLATFORM) && (! HOST_PLATFORM) 
-#define PRINTF(temp, string) ({}) //KL25z does not have printf function.
+#define PRINTF(string,temp) ({}) //KL25z does not have printf function.
 
 #elif (BBB_PLATFORM) && (! KL25Z_PLATFORM) && (! HOST_PLATFORM)
-#define PRINTF(temp) ({\
-        printf("%d \n", temp);\
+#define PRINTF(string, temp) ({\
+        printf("%s \t %d \n", string, temp);\
         })
 
 #elif (HOST_PLATFORM) && (! KL25Z_PLATFORM) && (! BBB_PLATFORM)
-#define PRINTF(temp, string) ({\
-        printf("%d \n", temp);\
+#define PRINTF(string, temp) ({\
+        printf("%s \t %d \n", string, temp);\
         })
 #else
 #error "Please specify one platform target"
