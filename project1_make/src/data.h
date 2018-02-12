@@ -9,9 +9,7 @@
 #define _DATA_H_
 #include <stdio.h>
 #include <stdint.h>
-#define PRINTF(temp, string) ({\
-	printf("sizeof(%s) = %d \n", string, temp);\
-	})
+#include "platform.h"
 
 //#define LITTLE_ENDIAN (0)
 //#define BIG_ENDIAN (1)

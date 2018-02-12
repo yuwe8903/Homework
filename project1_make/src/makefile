@@ -11,9 +11,7 @@
 #
 #-------------------------------------------------------------
 include sources.mk
-#ARCH:=$(shell arch)
-#CWD:=$(shell pwd)
-#OS:=(shell uname)
+
 #Overrides
 CPU = cortex-m0plus
 ARCH = thumb
@@ -24,21 +22,22 @@ CSTD = c99
 LD = arm-none-eabi-ld
 TARGET = main.out
 LDFLAGS = -Wl, -MAP=$(TARGET).map
-#CFLAGS = -mcpu=$(CPU) -m$(ARCH) \
-	--specs=$(SPECS) -Werror -std=$(CSTD)
 
 ifeq ($(PLATFORM),HOST)
 	CC = gcc
-	CFLAGS = -Werror
+	CFLAGS = -Werror\
+	-DHOST_PLATFORM
 else 
 ifeq ($(PLATFORM),BBB)
 	CC = arm-linux-gnueabihf-gcc
-	CFLAGS = -Werror -std=$(CSTD)
+	CFLAGS = -Werror -std=$(CSTD)\
+	-DBBB_PLATFORM
 else 
 ifeq ($(PLATFORM),KL25Z)
 	CC = arm-none-eabi-gcc
 	CFLAGS = -mcpu=$(CPU) -m$(ARCH) \
-        --specs=$(SPECS) -Werror -std=$(CSTD)
+        --specs=$(SPECS) -Werror -std=$(CSTD) \
+	-D KL25Z_PLATFORM
 endif
 endif
 endif
