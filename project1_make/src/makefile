@@ -20,8 +20,8 @@ CSTD = c99
 #Compilation
 #CC = arm-none-eabi-gcc
 LD = arm-none-eabi-ld
-TARGET = main.out
-LDFLAGS = -Wl, -MAP=$(TARGET).map
+TARGET = project1.elf
+LDFLAGS = -Wl, -T, -MAP=$(TARGET).map, MKL25Z128xxx4_flash.ld
 
 ifeq ($(PLATFORM),HOST)
 	CC = gcc
@@ -37,22 +37,33 @@ ifeq ($(PLATFORM),KL25Z)
 	CC = arm-none-eabi-gcc
 	CFLAGS = -mcpu=$(CPU) -m$(ARCH) \
         --specs=$(SPECS) -Werror -std=$(CSTD) \
-	-D KL25Z_PLATFORM
+	-DKL25Z_PLATFORM
 endif
 endif
 endif
-
 OBJS = $(SRCS:.c=.o)
+
 %.o : %.c
 	$(CC) -c $< $(CFLAGS) -o $@
 
+%.i : %.c
+	$(CC) -E $< $(CFLAGS) -o $@
+
+%.asm : %.c
+	$(CC) -S $< $(CFLAGS) -o $@
+
+.PHONY: compile-all
+compile-all: $(OBJS)
+	$(CC) $(OBJS) $(CFLAGS) -o $@
 .PHONY: build
 build: all
 .PHONY: all
 all: $(TARGET)
 $(TARGET): $(OBJS)
-	$(CC) $(OBJS) $(CFLAGS) -o $@
+	$(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) -o $@
 .PHONY: clean
 clean:
 	rm -f $(OBJS) $(TARGET) $(TARGET).map
+
+
 

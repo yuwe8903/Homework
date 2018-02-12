@@ -24,6 +24,7 @@
 #include "memory.h"
 #include "conversion.h"
 #include "debug.h"
+#include "data.h"
 int8_t test_data1() {
   uint8_t * ptr;
   int32_t num = -4096;
