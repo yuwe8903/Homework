@@ -3,5 +3,4 @@ SRCS =  main.c \
 	memory.c \
 	conversion.c \
 	data.c \
-	arch_arm32.c \
 	debug.c \

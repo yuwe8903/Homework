@@ -8,7 +8,7 @@
 #	CPU - ARM Cortex Architecture (cortex-moplus)
 #	ARCH - ARM Architecture (arm, thumb)
 #	SPECS - Specs file to give the linker (nosys.specs)
-#
+# , -MAP=$(TARGET).map,-L[DIR] -I[LIB] -T=MKL25Z128xxx4_flash.ld
 #-------------------------------------------------------------
 include sources.mk
 
@@ -18,33 +18,44 @@ ARCH = thumb
 SPECS = nosys.specs
 CSTD = c99
 #Compilation
-#CC = arm-none-eabi-gcc
 LD = arm-none-eabi-ld
-TARGET = project1.elf
-LDFLAGS = -Wl, -T, -MAP=$(TARGET).map, MKL25Z128xxx4_flash.ld
-
+AS = arm-none-eabi-as
+TARGET = project1.out
+MAP = project1
 ifeq ($(PLATFORM),HOST)
 	CC = gcc
-	CFLAGS = -Werror\
-	-DHOST_PLATFORM
+
+	CFLAGS = -Werror -std=$(CSTD)\
+	-DHOST_PLATFORM -I../include/common
+
+	LDFLAGS = -Wl,-Map=$(MAP).map
 else 
 ifeq ($(PLATFORM),BBB)
 	CC = arm-linux-gnueabihf-gcc
+
 	CFLAGS = -Werror -std=$(CSTD)\
 	-DBBB_PLATFORM
+	-I../include/common
+
+	LDFLAGS = -Wl,-Map=$(TARGET).map
 else 
 ifeq ($(PLATFORM),KL25Z)
 	CC = arm-none-eabi-gcc
+
 	CFLAGS = -mcpu=$(CPU) -m$(ARCH) \
         --specs=$(SPECS) -Werror -std=$(CSTD) \
-	-DKL25Z_PLATFORM
+	-DKL25Z_PLATFORM \
+	-I../include/common
+
+	LDFLAGS = -Wl, -Map=$(TARGET).map, \
+	-T=MKL25Z128xxx4_flash.ld
 endif
 endif
 endif
 OBJS = $(SRCS:.c=.o)
-
+ABC = $(SRCS:.c)
 %.o : %.c
-	$(CC) -c $< $(CFLAGS) -o $@
+	$(CC) -o $@ $(CFLAGS) -c $<
 
 %.i : %.c
 	$(CC) -E $< $(CFLAGS) -o $@
@@ -60,10 +71,10 @@ build: all
 .PHONY: all
 all: $(TARGET)
 $(TARGET): $(OBJS)
-	$(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) -o $@
+	$(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) -DPROJECT1 -o $@
 .PHONY: clean
 clean:
-	rm -f $(OBJS) $(TARGET) $(TARGET).map
+	rm -f *.asm *.i *.o $(TARGET) $(TARGET).map
 
 
 

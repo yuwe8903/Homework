@@ -23,14 +23,16 @@
 #include "project1.h"
 #include "memory.h"
 #include "conversion.h"
-#include "debug.h"
 #include "data.h"
+#include "debug.h"
+//#include "arch_arm32.h"
+
 int8_t test_data1() {
   uint8_t * ptr;
   int32_t num = -4096;
   uint32_t digits;
   int32_t value;
-
+  int8_t BASE_16 = 16;
   PRINTF("\ntest_data1();\n");
   ptr = (uint8_t*) reserve_words( DATA_SET_SIZE_W );
 
@@ -59,7 +61,7 @@ int8_t test_data2() {
   int32_t num = 123456;
   uint32_t digits;
   int32_t value;
-
+  int8_t BASE_10 = 10;
   PRINTF("test_data2();\n");
   ptr = (uint8_t*) reserve_words( DATA_SET_SIZE_W );
 
